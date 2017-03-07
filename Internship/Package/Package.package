@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="b9df8e9e-e8e4-47d9-8614-299943516c64" 
+        solutionId="b9df8e9e-e8e4-47d9-8614-299943516c64" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="Internship"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="600340e5-62a8-4c17-b8ab-99e6450acf3b" />
+  </features>
+</package>

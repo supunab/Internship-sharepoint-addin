@@ -1,0 +1,5 @@
+﻿#s4-ribbonrow, .suiteBarDelta ms-cui-topBar2, .s4-notdlg, .s4-pr s4-ribbonrowhidetitle, .s4-notdlg noindex, #ms-cui-ribbonTopBars, #s4-titlerow, #s4-pr s4-notdlg s4-titlerowhidetitle, #s4-leftpanel-content {display:none !important;}
+.s4-ca {margin-left:0px !important; margin-right:0px !important;}
+.ms-core-navigation { display: none; }
+#contentBox { margin-left: 0; }
+#suiteBarDelta {display : none;}

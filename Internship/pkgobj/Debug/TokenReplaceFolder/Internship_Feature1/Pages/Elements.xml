@@ -5,5 +5,6 @@
     <File Path="Pages\student.html" Url="Pages/student.html" ReplaceContent="TRUE" />
     <File Path="Pages\admin.html" Url="Pages/admin.html" ReplaceContent="TRUE" />
     <File Path="Pages\company.html" Url="Pages/company.html" ReplaceContent="TRUE" />
+    <File Path="Pages\home.html" Url="Pages/home.html" ReplaceContent="TRUE" />
   </Module>
 </Elements>

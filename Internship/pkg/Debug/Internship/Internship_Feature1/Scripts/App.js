@@ -1,25 +1,31 @@
 ﻿var app = angular.module("mainModule", ['ui.router']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/student");
+    $urlRouterProvider.otherwise("/home");
 
     $stateProvider
-    .state("student", {
+    .state("student.state", {
         url: "/student",
         templateUrl: "student.html",
         controller: "studentController"
     })
 
-    .state("company", {
+    .state("company.state", {
         url: "/company",
-        tempalteUrl: "company.html",
+        templateUrl: "company.html",
         controller: "companyController"
     })
 
-    .state("admin", {
+    .state("admin.state", {
         url: "/admin",
         templateUrl: "admin.html",
         controller: "adminController"
+    })
+
+    .state("home.state", {
+        url: "/home",
+        templateUrl: "home.html",
+        controller: "homeController"
     })
 
 });

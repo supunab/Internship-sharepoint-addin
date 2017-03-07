@@ -10,5 +10,6 @@
     <ProjectItemFile Source="admin.controller.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="company.controller.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="student.controller.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="home.controller.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>

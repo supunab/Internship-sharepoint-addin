@@ -6,6 +6,7 @@
     <ElementFile Location="Pages\student.html" />
     <ElementFile Location="Pages\admin.html" />
     <ElementFile Location="Pages\company.html" />
+    <ElementFile Location="Pages\home.html" />
     <ElementManifest Location="Scripts\Elements.xml" />
     <ElementFile Location="Scripts\App.js" />
     <ElementFile Location="Scripts\jquery-1.9.1.min.map" />
@@ -15,6 +16,7 @@
     <ElementFile Location="Scripts\admin.controller.js" />
     <ElementFile Location="Scripts\company.controller.js" />
     <ElementFile Location="Scripts\student.controller.js" />
+    <ElementFile Location="Scripts\home.controller.js" />
     <ElementManifest Location="Content\Elements.xml" />
     <ElementFile Location="Content\App.css" />
     <ElementManifest Location="Images\Elements.xml" />

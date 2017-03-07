@@ -1,7 +1,7 @@
 ﻿var app = angular.module("mainModule", ['ui.router']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/student");
+    $urlRouterProvider.otherwise("/home");
 
     $stateProvider
     .state("student", {
@@ -20,6 +20,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/admin",
         templateUrl: "admin.html",
         controller: "adminController"
+    })
+
+    .state("home", {
+        url: "/home",
+        templateUrl: "home.html",
+        controller: "homeController"
     })
 
 });

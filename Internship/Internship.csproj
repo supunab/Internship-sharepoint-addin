@@ -57,11 +57,13 @@
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{11c6ef73-0145-43ec-9953-296d4c76269e}</SharePointProjectItemId>
     </None>
+    <Content Include="Pages\home.html" />
     <Content Include="Pages\student.html" />
     <Content Include="Scripts\admin.controller.js" />
     <Content Include="Scripts\company.controller.js" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\home.controller.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />

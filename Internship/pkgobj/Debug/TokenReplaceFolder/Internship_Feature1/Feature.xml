@@ -17,6 +17,7 @@
     <ElementFile Location="Scripts\company.controller.js" />
     <ElementFile Location="Scripts\student.controller.js" />
     <ElementFile Location="Scripts\home.controller.js" />
+    <ElementFile Location="Scripts\user.service.js" />
     <ElementManifest Location="Content\Elements.xml" />
     <ElementFile Location="Content\App.css" />
     <ElementManifest Location="Images\Elements.xml" />

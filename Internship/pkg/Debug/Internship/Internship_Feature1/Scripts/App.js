@@ -4,25 +4,25 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
 
     $stateProvider
-    .state("student.state", {
+    .state("student", {
         url: "/student",
         templateUrl: "student.html",
         controller: "studentController"
     })
 
-    .state("company.state", {
+    .state("company", {
         url: "/company",
         templateUrl: "company.html",
         controller: "companyController"
     })
 
-    .state("admin.state", {
+    .state("admin", {
         url: "/admin",
         templateUrl: "admin.html",
         controller: "adminController"
     })
 
-    .state("home.state", {
+    .state("home", {
         url: "/home",
         templateUrl: "home.html",
         controller: "homeController"

@@ -10,5 +10,6 @@
     <File Path="Scripts\company.controller.js" Url="Scripts/company.controller.js" ReplaceContent="TRUE" />
     <File Path="Scripts\student.controller.js" Url="Scripts/student.controller.js" ReplaceContent="TRUE" />
     <File Path="Scripts\home.controller.js" Url="Scripts/home.controller.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\user.service.js" Url="Scripts/user.service.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

@@ -1,4 +1,22 @@
 ﻿<div>
     <h1>Admin Page</h1>
-    {{test}}
+    <label for="companyListFile">Import Company List from a .csv file</label>
+    <input ng-model="file" id="studentCompnayList" type="file" name="companyList" value="" />
+    <div id="drop_zone">Drop files here</div>
+    <button type="button" ng-click="readFile()">Load CSV</button>
+
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Company 1</th>
+            <th>Company 2</th>
+        </tr>
+        
+        <tr ng-repeat="studnet in studentList">
+            <td>{{student.email}}</td>
+            <td>{{student.company1}}</td>
+            <td>{{studnet.company2}}</td>
+        </tr>
+
+    </table>
 </div>

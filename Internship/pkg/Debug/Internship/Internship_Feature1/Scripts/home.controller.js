@@ -1,19 +1,13 @@
-﻿angular.module("mainModule").controller("homeController", ["$scope", "$state", "$timeout", "userService", function ($scope, $state, $timeout, userService) {
+﻿angular.module("mainModule").controller("homeController", ["$scope", "$state", "$interval", "userService", function ($scope, $state, $interval, userService) {
 
-    $scope.$watch(function () {
-        console.log("here");
-        return userService.userLoaded;
-    },
-    function () {
-        console.log("user load watched");
+    var redirectPromise = $interval(function () {
         console.log(userService.userLoaded);
         if (userService.userLoaded) {
             var userType = userService.getUserType();
 
-            console.log(userType);
             switch (userType) {
                 case "Admin":
-                    $state.transitionTo("admin", { arg : "arg"});
+                    $state.transitionTo("admin");
                     break;
 
                 case "Company":
@@ -26,12 +20,14 @@
                     break;
             }
 
+            stopInterval();
+
         }
 
-    });
+    }, 1000);
 
-    $scope.redirect = function () {
-        $state.transitionTo("student", { arg: "arg" });
+    function stopInterval() {
+        $interval.cancel(redirectPromise);
     }
 
 }]);

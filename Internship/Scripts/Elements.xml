@@ -11,5 +11,6 @@
     <File Path="Scripts\student.controller.js" Url="Scripts/student.controller.js" ReplaceContent="TRUE" />
     <File Path="Scripts\home.controller.js" Url="Scripts/home.controller.js" ReplaceContent="TRUE" />
     <File Path="Scripts\user.service.js" Url="Scripts/user.service.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\papaparse.min.js" Url="Scripts/papaparse.min.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

@@ -67,6 +67,7 @@
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\papaparse.min.js" />
     <Content Include="Scripts\student.controller.js" />
     <Content Include="Scripts\user.service.js" />
     <Content Include="Scripts\_references.js" />

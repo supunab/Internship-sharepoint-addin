@@ -43,6 +43,11 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Pages\adminStudents.html" />
+    <Content Include="Scripts\adminstudent.controller.js" />
+    <Content Include="StudentList\Elements.xml" />
+    <Content Include="StudentList\Schema.xml" />
+    <Content Include="StudentList\StudentListInstance\Elements.xml" />
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{3be1b413-5729-4fcd-a8d5-4556e152bde2}</SharePointProjectItemId>
@@ -51,6 +56,12 @@
     <Content Include="Pages\company.html" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
+    <None Include="StudentList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f8e1e13c-0feb-4c78-b56c-769c639af20c}</SharePointProjectItemId>
+    </None>
+    <None Include="StudentList\StudentListInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3a6dc378-41cc-4811-aa62-7c979f291a64}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />

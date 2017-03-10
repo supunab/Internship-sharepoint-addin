@@ -28,6 +28,7 @@
     <script type="text/javascript" src="../Scripts/company.controller.js"></script>
     <script type="text/javascript" src="../Scripts/admin.controller.js"></script>
     <script type="text/javascript" src="../Scripts/home.controller.js"></script>
+    <script type="text/html" src="../Scripts/adminstudent.controller.js"></script>
     
 </asp:Content>
 

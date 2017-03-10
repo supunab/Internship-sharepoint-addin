@@ -1,7 +1,6 @@
 ﻿angular.module("mainModule").controller("homeController", ["$scope", "$state", "$interval", "userService", function ($scope, $state, $interval, userService) {
 
     var redirectPromise = $interval(function () {
-        console.log(userService.userLoaded);
         if (userService.userLoaded) {
             var userType = userService.getUserType();
 

@@ -24,7 +24,6 @@
 
         }
 
-        console.log("user deatails loaded from the server");
         factory.userLoaded = true;
         return factory;
 

@@ -28,4 +28,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: "homeController"
     })
 
+    .state("adminStudents", {
+        url: "/admin/students",
+        templateUrl: "adminStudents.html",
+        controller: "adminStudentController"
+    });
+
 });

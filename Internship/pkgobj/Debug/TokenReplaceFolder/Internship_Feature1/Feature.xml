@@ -7,6 +7,7 @@
     <ElementFile Location="Pages\admin.html" />
     <ElementFile Location="Pages\company.html" />
     <ElementFile Location="Pages\home.html" />
+    <ElementFile Location="Pages\adminStudents.html" />
     <ElementManifest Location="Scripts\Elements.xml" />
     <ElementFile Location="Scripts\App.js" />
     <ElementFile Location="Scripts\jquery-1.9.1.min.map" />
@@ -19,10 +20,14 @@
     <ElementFile Location="Scripts\home.controller.js" />
     <ElementFile Location="Scripts\user.service.js" />
     <ElementFile Location="Scripts\papaparse.min.js" />
+    <ElementFile Location="Scripts\adminstudent.controller.js" />
     <ElementManifest Location="Content\Elements.xml" />
     <ElementFile Location="Content\App.css" />
     <ElementManifest Location="Images\Elements.xml" />
     <ElementFile Location="Images\AppIcon.png" />
+    <ElementManifest Location="StudentListInstance\Elements.xml" />
+    <ElementManifest Location="StudentList\Elements.xml" />
+    <ElementFile Location="StudentList\Schema.xml" />
   </ElementManifests>
   <UpgradeActions>
     <VersionRange>
@@ -31,6 +36,8 @@
         <ElementManifest Location="Scripts\Elements.xml" />
         <ElementManifest Location="Content\Elements.xml" />
         <ElementManifest Location="Images\Elements.xml" />
+        <ElementManifest Location="StudentListInstance\Elements.xml" />
+        <ElementManifest Location="StudentList\Elements.xml" />
       </ApplyElementManifests>
     </VersionRange>
   </UpgradeActions>

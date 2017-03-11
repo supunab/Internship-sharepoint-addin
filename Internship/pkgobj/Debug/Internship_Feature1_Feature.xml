@@ -8,6 +8,7 @@
     <ElementFile Location="Pages\company.html" />
     <ElementFile Location="Pages\home.html" />
     <ElementFile Location="Pages\adminStudents.html" />
+    <ElementFile Location="Pages\AdminCompany.html" />
     <ElementManifest Location="Scripts\Elements.xml" />
     <ElementFile Location="Scripts\App.js" />
     <ElementFile Location="Scripts\jquery-1.9.1.min.map" />
@@ -21,6 +22,7 @@
     <ElementFile Location="Scripts\user.service.js" />
     <ElementFile Location="Scripts\papaparse.min.js" />
     <ElementFile Location="Scripts\adminstudent.controller.js" />
+    <ElementFile Location="Scripts\admincompany.controller.js" />
     <ElementManifest Location="Content\Elements.xml" />
     <ElementFile Location="Content\App.css" />
     <ElementManifest Location="Images\Elements.xml" />

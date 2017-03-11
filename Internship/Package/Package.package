@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package dslVersion="1.0.0.0" 
-        Id="b9df8e9e-e8e4-47d9-8614-299943516c64" 
-        solutionId="b9df8e9e-e8e4-47d9-8614-299943516c64" 
-        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
-        name="Internship"
-        sharePointProductVersion="16.0">
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="b9df8e9e-e8e4-47d9-8614-299943516c64" solutionId="b9df8e9e-e8e4-47d9-8614-299943516c64" resetWebServer="false" sharePointProductVersion="16.0" name="Internship" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
   <features>
-        <featureReference itemId="600340e5-62a8-4c17-b8ab-99e6450acf3b" />
+    <featureReference itemId="600340e5-62a8-4c17-b8ab-99e6450acf3b" />
+    <featureReference itemId="8e0f475f-1c35-4dea-ba54-3611ef0e0d2c" />
   </features>
 </package>

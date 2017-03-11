@@ -26,7 +26,6 @@
 
         reader.onloadend = function (evt) {
             if (evt.target.readyState == FileReader.DONE) {
-                console.log("Done reading");
                 $scope.studentArray = Papa.parse(evt.target.result).data;
                 
                 // Remove the first row; (Header row)

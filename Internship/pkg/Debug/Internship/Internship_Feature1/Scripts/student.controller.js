@@ -1,28 +1,19 @@
 ﻿angular.module("mainModule").controller("studentController", ["$scope", "userService", function ($scope, userService) {
     
-    // Two companies assigned for the user
+    // Two companies assigned for the user and the cv upload status
     $scope.company = ["", ""];
+    $scope.companyStatus = ["Loading", "Loading"];
 
     var clientContext = SP.ClientContext.get_current();
-    var appWebUrl = decodeURIComponent(getQueryStringParameter("SPAppWebUrl"));
-    var hostWebUrl = decodeURIComponent(getQueryStringParameter("SPHostUrl"));
-
-    // Get parameters from the query string.
-    function getQueryStringParameter(paramToRetrieve) {
-        var params = document.URL.split("?")[1].split("&");
-        for (var i = 0; i < params.length; i = i + 1) {
-            var singleParam = params[i].split("=");
-            if (singleParam[0] == paramToRetrieve) return singleParam[1];
-        }
-    }
+    var appWebUrl = userService.appWebUrl;
+    var hostWebUrl = userService.hostWebUrl;
 
     // Get the compnay details for the user
-    //var userEmail = userService.userEmail;
+    var userEmail = userService.userEmail;
 
+    $scope.link1 = userService.hostWebUrl + '/InternshipList/' + userEmail.split('.')[0] + userEmail.split('.')[1].split('@')[0] + '0.pdf';
+    $scope.link2 = userService.hostWebUrl + '/InternshipList/' + userEmail.split('.')[0] + userEmail.split('.')[1].split('@')[0] + '1.pdf';
 
-
-    // Email hardcoded for testing
-    var userEmail = "eminda.14@uomcse.lk";
     var companyList = clientContext.get_web().get_lists().getByTitle("StudentList");
     var camlQuery = new SP.CamlQuery();
     camlQuery.set_viewXml("<View><Query><Where><Eq><FieldRef Name='Email' /><Value Type='Text'>" + userEmail + "</Value></Eq></Where></Query></View>");
@@ -38,19 +29,55 @@
             $scope.company[1] = enumerator.get_current().get_item("Company2");
         }
 
+        // After retriving companies search whether CV uploaded.
+        getCompanyStatus();
+
         // Since this is callback method, call $apply to apply changes to the view
         $scope.$apply();
 
     }, onError);
 
+    // get the status (that is whether a CV for that company is uploaded or not)
+    function getCompanyStatus() {
+        var hostClientContext = new SP.AppContextSite(clientContext, hostWebUrl);
+        var internshipList = hostClientContext.get_web().get_lists().getByTitle("InternshipList");
 
+        var camlQuery = new SP.CamlQuery();
+        camlQuery.set_viewXml("<View><Query><Where><Eq><FieldRef Name='Email' /><Value Type='Text'>" + userEmail + "</Value></Eq></Where></Query></View>");
+        items = internshipList.getItems(camlQuery);
+
+        clientContext.load(items);
+        clientContext.executeQueryAsync(function () {
+            var enumerator = items.getEnumerator();
+
+            $scope.companyStatus[0] = "Not Uploaded";
+            $scope.companyStatus[1] = "Not Uploaded";
+
+            while (enumerator.moveNext()) {
+                var tempCompany = enumerator.get_current().get_item("Company");
+
+                if (tempCompany == $scope.company[0]) {
+                    $scope.companyStatus[0] = "CV Uploaded";
+                }
+                else if (tempCompany == $scope.company[1]) {
+                    $scope.companyStatus[1] = "CV Uploaded";
+                }
+            }
+
+            // Since this is a callback, $apply to appear changes in the view
+            $scope.$apply();
+
+        }, onError)
+
+
+    }
     $scope.submitCV = function (id) {
 
         var hostClientContext = new SP.AppContextSite(clientContext, hostWebUrl);
-        internshipList = hostClientContext.get_web().get_lists().getByTitle("InternshipList");
+        var internshipList = hostClientContext.get_web().get_lists().getByTitle("InternshipList");
 
         var camlQuery = new SP.CamlQuery();
-        camlQuery.set_viewXml("<View><Query><Where><Eq><FieldRef Name='Email' /><Value Type='Text'>" + userEmail + "</Value></Eq><Eq><FieldRef Name='Company' /><Value Type='Text'>" + $scope.company[id] + "</Value></Eq></Where></Query></View>");
+        camlQuery.set_viewXml("<View><Query><Where><And><Eq><FieldRef Name='Email' /><Value Type='Text'>" + userEmail + "</Value></Eq><Eq><FieldRef Name='Company' /><Value Type='Text'>" + $scope.company[id] + "</Value></Eq></And></Where></Query></View>");
         items = internshipList.getItems(camlQuery);
 
         clientContext.load(items);
@@ -68,12 +95,12 @@
 
             function uploadFile(id) {
                 // Define the folder path
-                var serverRelativeUrlToFolder = "CV List";
+                var serverRelativeUrlToFolder = "InternshipList";
 
                 // Get test values from the file input and text input page controls.
                 // The display name must be unique every time you run the example.
                 var fileInput = $('#getFile' + id);
-                var newName = userEmail.split(".")[0] + userEmail.split(".")[1].split("@")[0];
+                var newName = userEmail.split(".")[0] + userEmail.split(".")[1].split("@")[0] + id;
 
                 // Initiate method calls using jQuery promises.
                 // Get the local file as an array buffer.
@@ -83,7 +110,6 @@
                     // Add the file to the SharePoint folder.
                     var addFile = addFileToFolder(arrayBuffer);
                     addFile.done(function (file, status, xhr) {
-
                         // Get the list item that corresponds to the uploaded file.
                         var getItem = getListItem(file.d.ListItemAllFields.__deferred.uri);
                         getItem.done(function (listItem, status, xhr) {
@@ -92,6 +118,10 @@
                             var changeItem = updateListItem(listItem.d.__metadata);
                             changeItem.done(function (data, status, xhr) {
                                 alert('file uploaded and updated');
+
+                                // Change the upload status
+                                getCompanyStatus();
+
                                 /*$("#loadingPic").hide();
                                 $("#modalTitle").html("CV Uploaded Successfully");
                                 $("#modalText").html('Your CV has been submitted successfully and you will get feedback soon from a email.');
@@ -124,7 +154,7 @@
 
                     // Get the file name from the file input control on the page.
                     var parts = fileInput[0].value.split('\\');
-                    var fileName = parts[parts.length - 1];
+                    var fileName = parts[parts.length - 1].split(".")[0] + id +"."+ parts[parts.length - 1].split(".")[1];
 
                     // Construct the endpoint.
                     var fileCollectionEndpoint = String.format(
@@ -179,10 +209,6 @@
                     // For simplicity, also use the name as the title.
                     // The example gets the list item type from the item's metadata, but you can also get it from the
                     // ListItemEntityTypeFullName property of the list.
-
-                    if (feedbackStatus == "Feedback Given") {
-                        count++;
-                    }
 
                     var body = String.format("{{'__metadata':{{'type':'{0}'}},'FileLeafRef':'{1}','Title':'{2}','Email':'{3}','Company':'{4}'}}",
                         itemMetadata.type, newName, newName, userEmail, $scope.company[id]);

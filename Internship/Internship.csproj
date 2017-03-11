@@ -43,11 +43,28 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="CompanyEmailList\CompanyEmailListInstance\Elements.xml" />
+    <Content Include="CompanyEmailList\Elements.xml" />
+    <Content Include="CompanyEmailList\Schema.xml" />
+    <Content Include="Features\Feature2\Feature2.Template.xml">
+      <DependentUpon>Feature2.feature</DependentUpon>
+    </Content>
+    <Content Include="Pages\AdminCompany.html" />
     <Content Include="Pages\adminStudents.html" />
+    <Content Include="Scripts\admincompany.controller.js" />
     <Content Include="Scripts\adminstudent.controller.js" />
     <Content Include="StudentList\Elements.xml" />
     <Content Include="StudentList\Schema.xml" />
     <Content Include="StudentList\StudentListInstance\Elements.xml" />
+    <None Include="CompanyEmailList\CompanyEmailListInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7e3a019f-6178-438c-8fd0-6775a746e6ed}</SharePointProjectItemId>
+    </None>
+    <None Include="CompanyEmailList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e56c18f6-36c2-405f-968f-9909bfb9e03d}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Feature2\Feature2.feature">
+      <FeatureId>{8e0f475f-1c35-4dea-ba54-3611ef0e0d2c}</FeatureId>
+    </None>
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{3be1b413-5729-4fcd-a8d5-4556e152bde2}</SharePointProjectItemId>

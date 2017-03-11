@@ -8,5 +8,6 @@
     <ProjectItemFile Source="company.html" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="home.html" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="adminStudents.html" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="AdminCompany.html" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="9987c6d4-b98c-40eb-acfb-fb3263221f69" Scope="Web" Title="Internship Feature2" Version="1.0.0.0">
+  <ElementManifests>
+    <ElementManifest Location="CompanyEmailList\Elements.xml" />
+    <ElementFile Location="CompanyEmailList\Schema.xml" />
+    <ElementManifest Location="CompanyEmailListInstance\Elements.xml" />
+  </ElementManifests>
+  <UpgradeActions>
+    <VersionRange>
+      <ApplyElementManifests>
+        <ElementManifest Location="CompanyEmailList\Elements.xml" />
+        <ElementManifest Location="CompanyEmailListInstance\Elements.xml" />
+      </ApplyElementManifests>
+    </VersionRange>
+  </UpgradeActions>
+</Feature>

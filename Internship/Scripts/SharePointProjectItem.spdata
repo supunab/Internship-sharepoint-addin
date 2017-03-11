@@ -14,5 +14,6 @@
     <ProjectItemFile Source="user.service.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="papaparse.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="adminstudent.controller.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="admincompany.controller.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>

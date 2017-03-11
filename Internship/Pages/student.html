@@ -4,9 +4,13 @@
     <h3>Company 1 : {{company[0]}}</h3>
     <input id="getFile0" type="file" name="company1" value=" " />
     <button type="button" ng-click="submitCV(0)">Submit 1</button>
+    <h4>Status : {{companyStatus[0]}}</h4>
+    <a ng-hide="companyStatus[0] != 'CV Uploaded'" target="_blank" ng-href="{{link1}}">Download CV</a>
 
     <h3>Company 2 : {{company[1]}}</h3>
     <input id="getFile1" type="file" name="company2" value=" " />
     <button type="button" ng-click="submitCV(1)">Submit 2</button>
+    <h4>Status : {{companyStatus[1]}}</h4>
+    <a ng-hide="companyStatus[1] != 'CV Uploaded'" target="_blank" ng-href="{{link2}}">Download CV</a>
 
 </div>

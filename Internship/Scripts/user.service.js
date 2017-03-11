@@ -48,10 +48,6 @@
     factory.appWebUrl = decodeURIComponent(getQueryStringParameter("SPAppWebUrl")).split("#")[0];
     factory.hostWebUrl = decodeURIComponent(getQueryStringParameter("SPHostUrl"));
 
-
-    console.log(factory.appWebUrl);
-    console.log(factory.hostWebUrl);
-
     // Get parameters from the query string.
     function getQueryStringParameter(paramToRetrieve) {
         var params = document.URL.split("?")[1].split("&");

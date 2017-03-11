@@ -1,4 +1,18 @@
 ﻿<div>
     <h1>Company Page</h1>
-    {{test}}
+    
+    <h2>{{company}}</h2>
+
+    <table>
+        <tr>
+            <th>Student Email</th>
+            <th>CV Uploaded</th>
+        </tr>
+
+        <tr ng-repeat="email in studentEmails">
+            <th>{{email}}</th>
+            <th>{{students[email]}}</th>
+        </tr>
+
+    </table>
 </div>

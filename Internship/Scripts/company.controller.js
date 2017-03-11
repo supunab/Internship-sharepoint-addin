@@ -4,10 +4,7 @@
     $scope.company;
 
     // Get the email of the user from userService
-    //var userEmail = userService.userEmail;
-
-    // For testing email hardcoded
-    var userEmail = "eminda.14@uomcse.lk";
+    var userEmail = userService.userEmail;
 
     // Find what is the company
     var clientContext = SP.ClientContext.get_current();

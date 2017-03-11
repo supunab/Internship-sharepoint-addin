@@ -1,6 +1,8 @@
-﻿angular.module("mainModule").controller("adminStudentController", ["$scope", function ($scope) {
+﻿angular.module("mainModule").controller("adminStudentController", ["$scope", "userService", function ($scope, userService) {
     
     $scope.studentArray = [];
+    $scope.students = {};
+    $scope.uploaded = {};
 
     // Load the data from the table
     var clientContext = SP.ClientContext.get_current();
@@ -16,24 +18,51 @@
         var enumerator = items.getEnumerator();
         while (enumerator.moveNext()) {
             var current = enumerator.get_current();
-            var temp = []
-            temp.push(current.get_item("Email"));
-            // Company1 and Company2 shoud be changed to Uploaded1 and Uploaded2
+            var temp = [];
+            $scope.studentArray.push(current.get_item("Email"));
+            $scope.uploaded[current.get_item("Email")] = [0, 0];
             temp.push(current.get_item("Company1"));
             temp.push(current.get_item("Company2"));
-
-            
-            $scope.studentArray.push(temp);
+            $scope.students[current.get_item("Email")] = temp;
 
         }
 
-        // Since this is a callback, $apply to update the model
-        $scope.$apply();
-
-        alert("success");
+        // Get uploaded data
+        getUploadStatus();
 
     }, onError);
 
+    function getUploadStatus() {
+        var hostWebUrl = userService.hostWebUrl;
+        var hostClientContext = new SP.AppContextSite(clientContext, hostWebUrl);
+
+        var internshipList = hostClientContext.get_web().get_lists().getByTitle("InternshipList");
+        items = internshipList.getItems(new SP.CamlQuery(), "Include(Email, Company)");
+        clientContext.load(items);
+
+        clientContext.executeQueryAsync(function () {
+            var enumerator = items.getEnumerator();
+            while (enumerator.moveNext()) {
+                var current = enumerator.get_current();
+                var tempCompany = current.get_item("Company");
+                var tempEmail = current.get_item("Email");
+
+                if ($scope.students[tempEmail][0] === tempCompany) {
+                    // First Company
+                    $scope.uploaded[tempEmail][0] = 1;
+                }
+                else {
+                    // Should be second company
+                    $scope.uploaded[tempEmail][1] = 1;
+                }
+            }
+
+            // Since this is a callback, $apply to update the model
+            $scope.$apply();
+
+        }, onError);
+
+    }
 
     function onError(err) {
         console.log(err);

@@ -1,4 +1,17 @@
 ﻿<div>
     <h1>Admin : A list of studens</h1>
-    {{test}}
+    
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Company 1</th>
+            <th>Company 2</th>
+        </tr>
+
+        <tr ng-repeat="student in studentArray">
+            <td>{{student[0]}}</td>
+            <td>{{student[1]}}</td>
+            <td>{{student[2]}}</td>
+        </tr>
+    </table>
 </div>

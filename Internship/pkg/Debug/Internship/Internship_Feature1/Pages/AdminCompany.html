@@ -17,4 +17,17 @@
     </table>
     
     <button type="button" ng-click="uploadToDatabase()">Upload to Database</button>
+
+    <h3>Current Company List</h3>
+    <table>
+        <tr>
+            <th>Company</th>
+            <th>Email</th>
+        </tr>
+
+        <tr ng-repeat="company in currentCompanyList">
+            <td>{{company[0]}}</td>
+            <td>{{company[1]}}</td>
+        </tr>
+    </table>
 </div>

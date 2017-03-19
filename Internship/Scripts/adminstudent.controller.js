@@ -3,6 +3,7 @@
     $scope.studentArray = [];
     $scope.students = {};
     $scope.uploaded = {};
+    $scope.loading = true;
 
     // Load the data from the table
     var clientContext = SP.ClientContext.get_current();
@@ -58,7 +59,9 @@
             }
 
             // Since this is a callback, $apply to update the model
+            $scope.loading = false;
             $scope.$apply();
+            $("#studentTable").DataTable();
 
         }, onError);
 

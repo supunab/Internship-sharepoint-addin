@@ -1,21 +1,47 @@
 ﻿<div>
-    <h1>Admin : A list of studens</h1>
     
-    <table>
-        <tr>
-            <th>Email</th>
-            <th>Company 1</th>
-            <th>Company 2</th>
-            <th>Uploaded 1</th>
-            <th>Uploaded 2</th>
-        </tr>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>Students</h1>
+            </div>
+            <div class="col-md-2 pull-right">
+                <button class="btn btn-primary" type="button" ui-sref="admin">Admin Panel</button>
+            </div>
+        </div>
+        
+        <div class="row" ng-show="loading">
+            <h1>Loading....!</h1>
+        </div>
 
-        <tr ng-repeat="student in studentArray">
-            <td>{{student}}</td>
-            <td>{{students[student][0]}}</td>
-            <td>{{uploaded[student][0]}}</td>
-            <td>{{students[student][1]}}</td>
-            <td>{{uploaded[student][1]}}</td>
-        </tr>
-    </table>
+        <div class="row" ng-hide="loading">
+            <table id="studentTable" class="display" cellspacing="0">
+                <tr>
+                    <th>Email</th>
+                    <th>Company 1</th>
+                    <th></th>
+                    <th></th>
+                    <th>Company 2</th>
+                </tr>
+
+                <tr ng-repeat="student in studentArray">
+                    <td>{{student}}</td>
+                    <td>{{students[student][0]}}</td>
+                    <td class="text-center">
+                        <i class="glyphicon" ng-class="{'glyphicon-ok text-success': uploaded[student][0],
+                                                                    'glyphicon-remove text-danger': !uploaded[student][0]}"></i>
+                    </td>
+                    <td>{{students[student][1]}}</td>
+                    <
+                    <td class="text-center">
+                        <i class="glyphicon" ng-class="{'glyphicon-ok text-success': uploaded[student][1],
+                                                                            'glyphicon-remove text-danger': !uploaded[student][1]}"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    
 </div>

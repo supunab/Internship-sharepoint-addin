@@ -3,6 +3,7 @@
     $scope.studentArray = [];
     $scope.students = {};
     $scope.uploaded = {};
+    $scope.loading = true;
 
     // Load the data from the table
     var clientContext = SP.ClientContext.get_current();
@@ -46,7 +47,7 @@
                 var current = enumerator.get_current();
                 var tempCompany = current.get_item("Company");
                 var tempEmail = current.get_item("Email");
-
+                
                 if ($scope.students[tempEmail][0] === tempCompany) {
                     // First Company
                     $scope.uploaded[tempEmail][0] = 1;
@@ -58,7 +59,9 @@
             }
 
             // Since this is a callback, $apply to update the model
+            $scope.loading = false;
             $scope.$apply();
+            $("#studentTable").DataTable();
 
         }, onError);
 
@@ -66,7 +69,9 @@
 
     function onError(err) {
         console.log(err);
-        alert("Something went wrong. Please try the task again.");
+        $("#modalHeader").html("Error Occurred");
+        $("#modalBody").html("An error occured. This may be due to bad internet connection. Please perform the task again.");
+        $("#dialogModal").modal();
     }
 
 

@@ -1,47 +1,51 @@
 ﻿<div>
-    
-    
     <div class="container">
+        <hr />
         <div class="row">
             <div class="col-md-3">
                 <h1>Students</h1>
             </div>
             <div class="col-md-2 pull-right">
-                <button class="btn btn-primary" type="button" ui-sref="admin">Admin Panel</button>
+                <button class="btn btn-primary btn-lg" type="button" ui-sref="admin">Admin Panel</button>
             </div>
         </div>
+        <hr />
         
         <div class="row" ng-show="loading">
-            <h1>Loading....!</h1>
+            <div class="row text-center">
+                <img ng-src="../Images/magnify.gif" alt="Alternate Text" /><p>Loading..!</p>
+            </div>
         </div>
 
         <div class="row" ng-hide="loading">
             <table id="studentTable" class="display" cellspacing="0">
-                <tr>
-                    <th>Email</th>
-                    <th>Company 1</th>
-                    <th></th>
-                    <th></th>
-                    <th>Company 2</th>
-                </tr>
-
-                <tr ng-repeat="student in studentArray">
-                    <td>{{student}}</td>
-                    <td>{{students[student][0]}}</td>
-                    <td class="text-center">
-                        <i class="glyphicon" ng-class="{'glyphicon-ok text-success': uploaded[student][0],
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Company 1</th>
+                        <th></th>
+                        <th></th>
+                        <th>Company 2</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr ng-repeat="student in studentArray">
+                        <td>{{student}}</td>
+                        <td>{{students[student][0]}}</td>
+                        <td class="text-center">
+                            <i class="glyphicon" ng-class="{'glyphicon-ok text-success': uploaded[student][0],
                                                                     'glyphicon-remove text-danger': !uploaded[student][0]}"></i>
-                    </td>
-                    <td>{{students[student][1]}}</td>
-                    <
-                    <td class="text-center">
-                        <i class="glyphicon" ng-class="{'glyphicon-ok text-success': uploaded[student][1],
+                        </td>
+                        <td>{{students[student][1]}}</td>
+                        <td class="text-center">
+                            <i class="glyphicon" ng-class="{'glyphicon-ok text-success': uploaded[student][1],
                                                                             'glyphicon-remove text-danger': !uploaded[student][1]}"></i>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
     </div>
-    
 </div>

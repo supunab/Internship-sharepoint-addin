@@ -27,6 +27,7 @@
     <ElementFile Location="Content\App.css" />
     <ElementManifest Location="Images\Elements.xml" />
     <ElementFile Location="Images\AppIcon.png" />
+    <ElementFile Location="Images\magnify.gif" />
     <ElementManifest Location="StudentListInstance\Elements.xml" />
     <ElementManifest Location="StudentList\Elements.xml" />
     <ElementFile Location="StudentList\Schema.xml" />

@@ -49,6 +49,7 @@
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
+    <Content Include="Images\magnify.gif" />
     <Content Include="Pages\AdminCompany.html" />
     <Content Include="Pages\adminStudents.html" />
     <Content Include="Scripts\admincompany.controller.js" />

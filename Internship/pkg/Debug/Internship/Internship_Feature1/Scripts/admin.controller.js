@@ -8,7 +8,9 @@
         fileExt = fileExt[fileExt.length - 1];
 
         if (fileExt !== "csv") {
-            alert("Only CSV files are allowed. Please upload a .CSV file.");
+            $("#modalHeader").html("File type error");
+            $("#modalBody").html("Only CSV files are allowed. Please upload a .CSV file.");
+            $("#dialogModal").modal();
             return;
         }
         
@@ -16,7 +18,9 @@
         var files = document.getElementById("studentCompanyList").files;
 
         if (!files.length) {
-            alert("Please upload a file");
+            $("#modalHeader").html("No File Found");
+            $("#modalBody").html("Please upload a file. (.CSV)");
+            $("#dialogModal").modal();
             return;
         }
 
@@ -33,6 +37,9 @@
 
                 // Apply changes to $scope since this is called from a callback
                 $scope.$apply();
+
+                // Load as a datatable
+                $("#tempTable").DataTable();
             }
         };
 
@@ -73,10 +80,11 @@
                 }
 
                 clientContext.executeQueryAsync(function () {
-                    alert("Success!");
+                    $("#modalHeader").html("Operation Success");
+                    $("#modalBody").html("Successfully loaded the data to the database. Click Student List button to recheck values stored in the database.");
+                    $("#dialogModal").modal();
 
-                }, onError);
-
+                }, onError
 
 
             }, onError)
@@ -90,7 +98,9 @@
 
     function onError(err) {
         console.log(err);
-        alert("There has been an error, this migth be becuase of an internet connection problem. Please try to perform the task again.");
+        $("#modalHeader").html("Error Occurred");
+        $("#modalBody").html("There has been an error, this migth be becuase of an internet connection problem. Please try to perform the task again.");
+        $("#dialogModal").modal();
     }
 
 }]);

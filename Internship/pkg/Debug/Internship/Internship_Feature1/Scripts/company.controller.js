@@ -1,9 +1,14 @@
-﻿angular.module("mainModule").controller("companyController", ["$scope", "userService", function ($scope, userService) {
+﻿angular.module("mainModule").controller("companyController", ["$scope", "$state", "userService", function ($scope, $state, userService) {
     $scope.studentEmails = [];
     $scope.students = {};
     $scope.company;
+    $scope.dataLoaded = false;
+    
+    if (!userService.userLoaded) {
+        // Goto home on refresh
+        $state.transitionTo("home");
+    }
 
-    // Get the email of the user from userService
     var userEmail = userService.userEmail;
 
     // Find what is the company
@@ -75,10 +80,10 @@
             }
 
             // Since this is a callback function, to update view $apply
+            $scope.dataLoaded = true;
             $scope.$apply();
-            console.log("Done");
-            console.log($scope.studentEmails);
-            console.log($scope.students);
+
+            $("#studentTable").DataTable();
 
         }, onError)
     }

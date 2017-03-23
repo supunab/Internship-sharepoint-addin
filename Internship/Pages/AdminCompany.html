@@ -6,7 +6,7 @@
                 <h1>Add Companies</h1>
             </div>
             <div class="col-md-8">
-                <button type="button" ui-sref="admin    " class="btn btn-lg btn-primary pull-right"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbspAdmin Panel</button>
+                <button type="button" ui-sref="admin" class="btn btn-lg btn-primary pull-right"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbspAdmin Panel</button>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
 
         <div class="row" ng-show="showNew">
             <div class="col-md-10 col-md-offset-1">
-                <table id="tempTable">
+                <table id="tempTable" class="display" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Company</th>
@@ -57,7 +57,7 @@
         <div class="row" ng-show="showCurrent && currentListLoaded">
             <div class="col-md-10 col-md-offset-1">
                 <h3>Current Company List</h3>
-                <table id="currentTable">
+                <table id="currentTable" class="display" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Company</th>

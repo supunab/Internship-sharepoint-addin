@@ -1,18 +1,45 @@
 ﻿<div>
-    <h1>Company Page</h1>
+    <div class="container">
+        <hr />
+
+        <div class="row">
+            <h1>Company Page</h1>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <h2>Company Name : {{company}}</h2>
+        </div>
+
+        <div class="row" ng-show="dataLoaded">
+            <div class="col-md-12">
+                <table id="studentTable">
+                    <thead>
+                        <tr>
+                            <th>Student Email</th>
+                            <th>CV Uploaded</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="email in studentEmails">
+                            <th>{{email}}</th>
+                            <th><a ng-href=""></a>{{students[email]}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row" ng-hide="dataLoaded">
+            <div class="row text-center">
+                <img ng-src="../Images/magnify.gif" alt="Alternate Text" /><p>Loading..!</p>
+            </div>
+        </div>
+    </div>
     
-    <h2>{{company}}</h2>
+    
+    
 
-    <table>
-        <tr>
-            <th>Student Email</th>
-            <th>CV Uploaded</th>
-        </tr>
 
-        <tr ng-repeat="email in studentEmails">
-            <th>{{email}}</th>
-            <th>{{students[email]}}</th>
-        </tr>
-
-    </table>
 </div>

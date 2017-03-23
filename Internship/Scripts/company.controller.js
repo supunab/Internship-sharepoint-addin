@@ -1,9 +1,15 @@
-﻿angular.module("mainModule").controller("companyController", ["$scope", "userService", function ($scope, userService) {
+﻿angular.module("mainModule").controller("companyController", ["$scope", "$state", "userService", function ($scope, $state, userService) {
     $scope.studentEmails = [];
     $scope.students = {};
     $scope.company;
+    $scope.dataLoaded = false;
+    
+    if (!userService.userLoaded) {
+        // Goto home on refresh
+        $state.transitionTo("home");
+    }
 
-    // Get the email of the user from userService
+    $scope.hostWeb = userService.hostWebUrl;
     var userEmail = userService.userEmail;
 
     // Find what is the company
@@ -21,7 +27,9 @@
         if (enumerator.moveNext()) {
             $scope.company = enumerator.get_current().get_item("Company");
         } else {
-            alert("Your email is not registered to a company.")
+            $("#modalHeader").html("Unknown Email Address");
+            $("#modalBody").html("Your email address is not registered as a company email address. Please contact the internship coordinator if there is any issue.");
+            $("#dialogModal").modal();
         }
 
         // Since this is a callback, $apply to show changes in the view
@@ -70,22 +78,23 @@
 
             while (enumerator.moveNext()) {
                 var current = enumerator.get_current();
-                console.log(current.get_item("Email"));
                 $scope.students[current.get_item("Email")] = current.get_item("FileLeafRef");
             }
 
             // Since this is a callback function, to update view $apply
+            $scope.dataLoaded = true;
             $scope.$apply();
-            console.log("Done");
-            console.log($scope.studentEmails);
-            console.log($scope.students);
+
+            $("#studentTable").DataTable();
 
         }, onError)
     }
 
     function onError(err) {
         console.log(err);
-        alert("Something went wrong. This might be due to internet connection problem. Please perform the task again.");
+        $("#modalHeader").html("An Error Occurred");
+        $("#modalBody").html("Something went wrong. This might be due to internet connection problem. Please perform the task again.");
+        $("#dialogModal").modal();
     }
 
 }]);

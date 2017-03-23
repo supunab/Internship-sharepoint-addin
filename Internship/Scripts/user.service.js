@@ -24,8 +24,6 @@
 
         }
 
-        factory.userLoaded = true;
-
     }
     , onError);
 
@@ -34,6 +32,9 @@
     clientContext.load(user);
     clientContext.executeQueryAsync(function () {
         factory.userEmail = user.get_email();
+
+        factory.userLoaded = true;
+
     }, onError);
 
     factory.getUserType = function () {

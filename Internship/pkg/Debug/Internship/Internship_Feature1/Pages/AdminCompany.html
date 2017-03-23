@@ -1,33 +1,85 @@
 ﻿<div>
-    <h1>Add Companies</h1>
-    {{test}}
-    <input id="companyFile"type="file" name="companyList" value="" />
-    <button type="button" ng-click="readCSV()">Upload CSV</button>
+    <div class="container">
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Add Companies</h1>
+            </div>
+            <div class="col-md-8">
+                <button type="button" ui-sref="admin" class="btn btn-lg btn-primary pull-right"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbspAdmin Panel</button>
+            </div>
+        </div>
 
-    <table>
-        <tr>
-            <th>Company</th>
-            <th>Email</th>
-        </tr>
+        <hr />
 
-        <tr ng-repeat="company in companyList">
-            <td>{{company[0]}}</td>
-            <td>{{company[1]}}</td>
-        </tr>
-    </table>
-    
-    <button type="button" ng-click="uploadToDatabase()">Upload to Database</button>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Company List File</span>
+                    <input class="form-control" id="companyFile" type="file" aria-describedby="basic-addon1" name="companyList" value="" />
+                </div>
+            </div>
 
-    <h3>Current Company List</h3>
-    <table>
-        <tr>
-            <th>Company</th>
-            <th>Email</th>
-        </tr>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-block btn-primary" ng-click="readCSV()">Upload CSV</button>
+            </div>
 
-        <tr ng-repeat="company in currentCompanyList">
-            <td>{{company[0]}}</td>
-            <td>{{company[1]}}</td>
-        </tr>
-    </table>
+            <div class="col-md-2">
+                <button type="button" ng-class="{'disabled' : !csvLoaded, '' : csvLoaded}" class="btn btn-block btn-danger" ng-click="uploadToDatabase()">Submit</button>
+            </div>
+
+            <div class="col-md-2">
+                <button type="button" class="btn btn-block btn-success" ng-click="viewCurrent()">View Current</button>
+            </div>
+        </div>
+
+        <div class="row" ng-show="showNew">
+            <div class="col-md-10 col-md-offset-1">
+                <table id="tempTable">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="company in companyList">
+                            <td>{{company[0]}}</td>
+                            <td>{{company[1]}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="row" ng-show="showCurrent && currentListLoaded">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>Current Company List</h3>
+                <table id="currentTable">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="company in currentCompanyList">
+                            <td>{{company[0]}}</td>
+                            <td>{{company[1]}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="row" ng-show="showCurrent && !currentListLoaded">
+            <div class="row text-center">
+                <img ng-src="../Images/magnify.gif" alt="Alternate Text" /><p>Loading..!</p>
+            </div>
+        </div>
+    </div>
 </div>

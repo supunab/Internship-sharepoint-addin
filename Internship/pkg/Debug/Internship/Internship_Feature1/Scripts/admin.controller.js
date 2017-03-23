@@ -1,5 +1,6 @@
 ﻿angular.module("mainModule").controller("adminController", ["$scope", function ($scope) {
     $scope.studentArray;
+    $scope.csvLoaded = false;
 
     $scope.readFile = function () {
         // Check file extention
@@ -34,12 +35,14 @@
                 
                 // Remove the first row; (Header row)
                 $scope.studentArray = $scope.studentArray.slice(1);
+                $scope.csvLoaded = true;
 
                 // Apply changes to $scope since this is called from a callback
                 $scope.$apply();
 
                 // Load as a datatable
                 $("#tempTable").DataTable();
+
             }
         };
 
@@ -48,6 +51,11 @@
     }
 
     $scope.updateToDatabase = function () {
+
+        if (!$scope.csvLoaded) {
+            return;
+        }
+
         // Delete all the current records
         var clientContext = SP.ClientContext.get_current();
         var studentList = clientContext.get_web().get_lists().getByTitle("StudentList");
@@ -81,10 +89,10 @@
 
                 clientContext.executeQueryAsync(function () {
                     $("#modalHeader").html("Operation Success");
-                    $("#modalBody").html("Successfully loaded the data to the database. Click Student List button to recheck values stored in the database.");
+                    $("#modalBody").html("Successfully loaded the data to the database. Click <b>View Current</b> button to recheck values stored in the database.");
                     $("#dialogModal").modal();
 
-                }, onError
+                }, onError)
 
 
             }, onError)

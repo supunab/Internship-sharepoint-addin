@@ -51,6 +51,11 @@
     }
 
     $scope.updateToDatabase = function () {
+
+        if (!$scope.csvLoaded) {
+            return;
+        }
+
         // Delete all the current records
         var clientContext = SP.ClientContext.get_current();
         var studentList = clientContext.get_web().get_lists().getByTitle("StudentList");

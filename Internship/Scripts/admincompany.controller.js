@@ -1,7 +1,10 @@
 ﻿angular.module("mainModule").controller("adminCompanyController", ["$scope", function ($scope) {
-    $scope.test = "Hello from the controller";
     $scope.companyList;
     $scope.currentCompanyList = [];
+    $scope.currentListLoaded = false;
+    $scope.csvLoaded = false;
+    $scope.showCurrent = true;
+    $scope.showNew = false;
 
     // load the current company list
     loadCurrentCompanyList();
@@ -13,14 +16,18 @@
         fileExt = fileExt[fileExt.length - 1];
 
         if (fileExt !== "csv") {
-            alert("Only CSV files are allowed. Please upload a .CSV file.");
+            $("#modalHeader").html("File type error");
+            $("#modalBody").html("Only CSV files are allowed. Please upload a .CSV file.");
+            $("#dialogModal").modal();
             return;
         }
 
         var files = document.getElementById("companyFile").files;
 
         if (!files.length) {
-            alert("You have to upload a file");
+            $("#modalHeader").html("No File Found");
+            $("#modalBody").html("Please upload a file. (.CSV)");
+            $("#dialogModal").modal();
             return;
         }
 
@@ -36,14 +43,30 @@
                 $scope.companyList = $scope.companyList.slice(1);
 
                 // Apply changes to $scope since this is called from a callback
+                $scope.csvLoaded = true;
+                $scope.showNew = true;
+                $scope.showCurrent = false;
                 $scope.$apply();
+
+                $("#tempTable").DataTable();
+
             }
         };
 
         reader.readAsText(file);
     }
 
-    $scope.uploadToDatabase = function(){
+    $scope.viewCurrent = function () {
+        $scope.showCurrent = true;
+        $scope.showNew = false;
+    }
+
+    $scope.uploadToDatabase = function () {
+
+        if (!$scope.csvLoaded) {
+            return;
+        }
+
         var clientContext = SP.ClientContext.get_current();
         var companyEmailList = clientContext.get_web().get_lists().getByTitle("CompanyEmailList");
 
@@ -73,7 +96,9 @@
                 }
 
                 clientContext.executeQueryAsync(function () {
-                    alert("Added successfully");
+                    $("#modalHeader").html("Database Update Success");
+                    $("#modalBody").html("Successfully loaded the data to the database. Click <b>View Current</b> button to recheck values stored in the database.");
+                    $("#dialogModal").modal();
                     // Load the company list to the view
                     loadCurrentCompanyList();
 
@@ -84,10 +109,14 @@
 
     function onError(err) {
         console.log(err);
-        alert("Something went wrong. This may be due to an internet connection problem. Please perform the task again.");
+        $("#modalHeader").html("Error Occurred");
+        $("#modalBody").html("There has been an error, this migth be becuase of an internet connection problem. Please try to perform the task again.");
+        $("#dialogModal").modal();
     }
 
     function loadCurrentCompanyList() {
+        $scope.currentListLoaded = false;
+        $scope.currentCompanyList = [];
         var clientContext = SP.ClientContext.get_current();
         var companyEmailList = clientContext.get_web().get_lists().getByTitle("CompanyEmailList");
 
@@ -103,7 +132,10 @@
             }
 
             // Since this is happening inside a callback, $apply to update the $scope
+            $scope.currentListLoaded = true;
             $scope.$apply();
+
+            $("#currentTable").DataTable();
 
         }, onError)
     }

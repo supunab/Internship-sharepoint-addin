@@ -63,12 +63,11 @@
     }
 
     $scope.uploadToDatabase = function () {
-
-        $scope.updating = true;
-
         if (!$scope.csvLoaded) {
             return;
         }
+
+        $scope.updating = true;
 
         var clientContext = SP.ClientContext.get_current();
         var companyEmailList = clientContext.get_web().get_lists().getByTitle("CompanyEmailList");

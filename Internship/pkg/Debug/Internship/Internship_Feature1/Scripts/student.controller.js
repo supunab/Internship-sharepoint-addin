@@ -1,5 +1,10 @@
-﻿angular.module("mainModule").controller("studentController", ["$scope", "userService", function ($scope, userService) {
+﻿angular.module("mainModule").controller("studentController", ["$scope", "$state", "userService", function ($scope, $state, userService) {
     
+    // If userService is not loaded, redirect to home state
+    if (!userService.userLoaded) {
+        $state.transitionTo("home");
+    }
+
     // Two companies assigned for the user and the cv upload status
     $scope.company = ["", ""];
     $scope.companyStatus = ["Loading", "Loading"];
@@ -117,15 +122,13 @@
                             // Change the display name and title of the list item.
                             var changeItem = updateListItem(listItem.d.__metadata);
                             changeItem.done(function (data, status, xhr) {
-                                alert('file uploaded and updated');
-
+                                $("#modalHeader").html("Successfully Updated");
+                                $("#modalBody").html("The CV has been uploaded successfully. Please double check using the Download CV button.");
+                                $("#dialogModal").modal();
                                 // Change the upload status
                                 getCompanyStatus();
+                                
 
-                                /*$("#loadingPic").hide();
-                                $("#modalTitle").html("CV Uploaded Successfully");
-                                $("#modalText").html('Your CV has been submitted successfully and you will get feedback soon from a email.');
-                                $("#alertModal").modal();*/
                             });
                             changeItem.fail(onError);
                         });
@@ -240,10 +243,11 @@
     
 
 
-    function onError(sender, args) {
-        console.log(args.get_message());
-        console.log(args.get_stackTrace())
-        alert("Something went wrong. This is most probably due to bad internet connection. Please perform the task again.");
+    function onError(err) {
+        console.log(err);
+        $("#modalHeader").html("An Error Occurred");
+        $("#modalBody").html("Something went wrong. This is most probably due to bad internet connection. Please perform the task again.");
+        $("#dialogModal").modal();
     }
 
 

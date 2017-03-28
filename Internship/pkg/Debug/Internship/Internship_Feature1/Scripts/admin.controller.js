@@ -1,6 +1,7 @@
 ﻿angular.module("mainModule").controller("adminController", ["$scope", function ($scope) {
     $scope.studentArray;
     $scope.csvLoaded = false;
+    $scope.updating = false;
 
     $scope.readFile = function () {
         // Check file extention
@@ -56,6 +57,8 @@
             return;
         }
 
+        $scope.updating = true;
+
         // Delete all the current records
         var clientContext = SP.ClientContext.get_current();
         var studentList = clientContext.get_web().get_lists().getByTitle("StudentList");
@@ -92,6 +95,8 @@
                     $("#modalBody").html("Successfully loaded the data to the database. Click <b>View Current</b> button to recheck values stored in the database.");
                     $("#dialogModal").modal();
 
+                    $scope.updating = false;
+
                 }, onError)
 
 
@@ -109,6 +114,7 @@
         $("#modalHeader").html("Error Occurred");
         $("#modalBody").html("There has been an error, this migth be becuase of an internet connection problem. Please try to perform the task again.");
         $("#dialogModal").modal();
+        $scope.updating = false;
     }
 
 }]);

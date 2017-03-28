@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-md-2">
-                <button type="button" class="btn btn-block btn-danger" ng-class="{'disabled' : !csvLoaded, '' : csvLoaded}" ng-click="updateToDatabase()">Submit</button>
+                <button type="button" class="btn btn-block btn-danger" ng-class="{'disabled' : !csvLoaded || inProcess, '' : csvLoaded}" ng-click="updateToDatabase()">Submit</button>
             </div>
 
             <div class="col-md-2">
@@ -66,4 +66,7 @@
             <div class="alert alert-danger" role="alert">After uploading, click on the Load CSV button. Then a table with the data will be shown. After validating, click on the Submit button. All the <b>previous data will be erased and replaced</b> from the new data.</div>
         </div>
     </div>
+
+
+    <div class="modal-backdrop" ng-show="updating" style="background-color:#0a2030; opacity:0.5;"></div>
 </div>

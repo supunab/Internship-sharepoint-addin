@@ -3,18 +3,14 @@
         <hr />
 
         <div class="row">
-            <h1>Company Page</h1>
+            <h2>Company : <span class="label label-primary">{{company}}</span></h2>
         </div>
 
         <hr />
 
-        <div class="row">
-            <h2>Company Name : {{company}}</h2>
-        </div>
-
         <div class="row" ng-show="dataLoaded">
             <div class="col-md-12">
-                <table id="studentTable">
+                <table id="studentTable" class="display" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Student Email</th>
@@ -24,7 +20,7 @@
                     <tbody>
                         <tr ng-repeat="email in studentEmails">
                             <th>{{email}}</th>
-                            <th><a ng-href=""></a>{{students[email]}}</th>
+                            <th><h4><span ng-show="students[email]" class="label label-success"><a ng-href="{{hostWeb}}/InternshipList/{{students[email]}}" target="_blank">Download CV</a></span><span ng-hide="students[email]" class="label label-danger">Not Uploaded</span></h4></th>
                         </tr>
                     </tbody>
                 </table>

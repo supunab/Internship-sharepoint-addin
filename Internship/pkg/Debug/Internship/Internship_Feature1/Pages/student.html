@@ -1,16 +1,88 @@
 ﻿<div>
-    <h1>Student Template!</h1>
-    
-    <h3>Company 1 : {{company[0]}}</h3>
-    <input id="getFile0" type="file" name="company1" value=" " />
-    <button type="button" ng-click="submitCV(0)">Submit 1</button>
-    <h4>Status : {{companyStatus[0]}}</h4>
-    <a ng-hide="companyStatus[0] != 'CV Uploaded'" target="_blank" ng-href="{{link1}}">Download CV</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert">Company 1 and Company 2 are the companies that are allocated to you after the bidding. If there is any issue please contact the internship coordinator. If an error pops up during the uploading process, refresh the page and redo the upload.</div>
+                <div class="alert alert-danger" role="alert">Each time you do an upload to the same company, the previous CV will be <b>REPLACED</b>. You can view your currently uploaded CV using Download CV button. Please double check after updating!!</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well"style="width:98%">
 
-    <h3>Company 2 : {{company[1]}}</h3>
-    <input id="getFile1" type="file" name="company2" value=" " />
-    <button type="button" ng-click="submitCV(1)">Submit 2</button>
-    <h4>Status : {{companyStatus[1]}}</h4>
-    <a ng-hide="companyStatus[1] != 'CV Uploaded'" target="_blank" ng-href="{{link2}}">Download CV</a>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Company 1 : <span class="label label-danger">{{company[0]}}</span></h3>
+                        </div>
+                    </div>
 
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Upload CV </span>
+                                <input style="width:98%;" id="getFile0" type="file" class="form-control" value=" " name="company1" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary btn-block" ng-click="submitCV(0)">Submit</button>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Status : <span class="label label-warning">{{companyStatus[0]}}</span></h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a ng-hide="companyStatus[0] != 'CV Uploaded'" target="_blank" ng-href="{{link1}}">Download CV</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 pull-right">
+                <div style="width:98%" class="well">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Company 2 : <span class="label label-danger">{{company[1]}}</span></h3>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2">Upload CV </span>
+                                <input style="width:98%;" id="getFile1" type="file" class="form-control" value=" " name="company2" aria-describedby="basic-addon2">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary btn-block" ng-click="submitCV(1)">Submit</button>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Status : <span class="label label-warning">{{companyStatus[1]}}</span></h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a ng-hide="companyStatus[1] != 'CV Uploaded'" target="_blank" ng-href="{{link2}}">Download CV</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

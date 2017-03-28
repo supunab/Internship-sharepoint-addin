@@ -79,6 +79,16 @@
     }
     $scope.submitCV = function (id) {
 
+        // check the file extension
+        if ($('#getFile' + id).val().split('.')[1] != 'pdf') {
+            $("#modalHeader").html("File Type Error");
+            $("#modalBody").html("Only PDFs are allowed to upload.");
+            $("#dialogModal").modal();
+            return;
+        }
+
+        $scope.updating = true;
+
         var hostClientContext = new SP.AppContextSite(clientContext, hostWebUrl);
         var internshipList = hostClientContext.get_web().get_lists().getByTitle("InternshipList");
 

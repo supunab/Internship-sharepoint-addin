@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="alert alert-success" role="alert">Company 1 and Company 2 are the companies that are allocated to you after the bidding. If there is any issue please contact the internship coordinator. If an error pops up during the uploading process, refresh the page and redo the upload.</div>
+                <div class="alert alert-success" role="alert">Company 1 and Company 2 are the companies that are allocated to you after the bidding. If there is any issue please contact the internship coordinator. If an error pops up during the uploading process, refresh the page and redo the upload. Please note that only <b>PDFs</b> are allowed to update.</div>
                 <div class="alert alert-danger" role="alert">Each time you do an upload to the same company, the previous CV will be <b>REPLACED</b>. You can view your currently uploaded CV using Download CV button. Please double check after updating!!</div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                         <div class="col-md-8">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Upload CV </span>
-                                <input style="width:98%;" id="getFile0" type="file" class="form-control" value=" " name="company1" aria-describedby="basic-addon1">
+                                <input style="width:98%;" id="getFile0" accept=".pdf" type="file" class="form-control" value=" " name="company1" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -60,7 +60,7 @@
                         <div class="col-md-8">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2">Upload CV </span>
-                                <input style="width:98%;" id="getFile1" type="file" class="form-control" value=" " name="company2" aria-describedby="basic-addon2">
+                                <input style="width:98%;" accept=".pdf" id="getFile1" type="file" class="form-control" value=" " name="company2" aria-describedby="basic-addon2">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -86,5 +86,5 @@
         </div>
     </div>
 
-    <div class="modal-backdrop" ng-show="updating" style="background-color:#0a2030; opacity:0.5;"></div>
+    <div class="modal-backdrop fade in" ng-show="updating" style="background-color:#0a2030; opacity:0.5;"></div>
 </div>

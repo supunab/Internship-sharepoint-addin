@@ -8,6 +8,7 @@
     // Two companies assigned for the user and the cv upload status
     $scope.company = ["", ""];
     $scope.companyStatus = ["Loading", "Loading"];
+    $scope.updating = false;
 
     var clientContext = SP.ClientContext.get_current();
     var appWebUrl = userService.appWebUrl;
@@ -78,6 +79,16 @@
     }
     $scope.submitCV = function (id) {
 
+        // check the file extension
+        if ($('#getFile' + id).val().split('.')[1] != 'pdf') {
+            $("#modalHeader").html("File Type Error");
+            $("#modalBody").html("Only PDFs are allowed to upload.");
+            $("#dialogModal").modal();
+            return;
+        }
+
+        $scope.updating = true;
+
         var hostClientContext = new SP.AppContextSite(clientContext, hostWebUrl);
         var internshipList = hostClientContext.get_web().get_lists().getByTitle("InternshipList");
 
@@ -125,6 +136,10 @@
                                 $("#modalHeader").html("Successfully Updated");
                                 $("#modalBody").html("The CV has been uploaded successfully. Please double check using the Download CV button.");
                                 $("#dialogModal").modal();
+
+                                $scope.updating = false;
+                                $scope.$apply();
+
                                 // Change the upload status
                                 getCompanyStatus();
                                 
@@ -248,6 +263,9 @@
         $("#modalHeader").html("An Error Occurred");
         $("#modalBody").html("Something went wrong. This is most probably due to bad internet connection. Please perform the task again.");
         $("#dialogModal").modal();
+
+        $scope.updating = false;
+        $scope.$apply();
     }
 
 

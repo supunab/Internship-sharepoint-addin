@@ -1,5 +1,16 @@
-﻿angular.module("mainModule").controller("adminStudentController", ["$scope", "userService", function ($scope, userService) {
+﻿angular.module("mainModule").controller("adminStudentController", ["$scope", '$state', "userService", function ($scope, $state, userService) {
     
+    // Front-end security
+    // If user not loaded, go to the home state
+    if (!userService.userLoaded) {
+        $state.go('home');
+    }
+
+    // IF the current user type is not admin, go again to the home state
+    if (!userService.getUserType() == 'Admin') {
+        $state.go('home');
+    }
+
     $scope.studentArray = [];
     $scope.students = {};
     $scope.uploaded = {};

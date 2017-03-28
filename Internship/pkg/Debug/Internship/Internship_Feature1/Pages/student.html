@@ -22,7 +22,7 @@
                         <div class="col-md-8">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Upload CV </span>
-                                <input style="width:98%;" id="getFile0" type="file" class="form-control" value=" " name="company1" aria-describedby="basic-addon1">
+                                <input style="width:98%;" id="getFile0" accept=".pdf" type="file" class="form-control" value=" " name="company1" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -60,7 +60,7 @@
                         <div class="col-md-8">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon2">Upload CV </span>
-                                <input style="width:98%;" id="getFile1" type="file" class="form-control" value=" " name="company2" aria-describedby="basic-addon2">
+                                <input style="width:98%;" accept=".pdf" id="getFile1" type="file" class="form-control" value=" " name="company2" aria-describedby="basic-addon2">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -85,4 +85,6 @@
             </div>
         </div>
     </div>
+
+    <div class="modal-backdrop fade in" ng-show="updating" style="background-color:#0a2030; opacity:0.5;"></div>
 </div>

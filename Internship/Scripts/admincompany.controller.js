@@ -1,4 +1,17 @@
-﻿angular.module("mainModule").controller("adminCompanyController", ["$scope", function ($scope) {
+﻿angular.module("mainModule").controller("adminCompanyController", ["$scope",'$state', 'userService', function ($scope, $state, userService) {
+
+    // Front-end security
+    // If user not loaded, go to the home state
+    if (!userService.userLoaded) {
+        $state.go('home');
+    }
+
+    // IF the current user type is not admin, go again to the home state
+    if (!userService.getUserType() == 'Admin') {
+        $state.go('home');
+    }
+
+
     $scope.companyList;
     $scope.currentCompanyList = [];
     $scope.currentListLoaded = false;
@@ -120,6 +133,8 @@
         $("#modalHeader").html("Error Occurred");
         $("#modalBody").html("There has been an error, this migth be becuase of an internet connection problem. Please try to perform the task again.");
         $("#dialogModal").modal();
+        $scope.updating = false;
+        $scope.$apply();
     }
 
     function loadCurrentCompanyList() {

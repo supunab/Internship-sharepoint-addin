@@ -5,6 +5,7 @@
     $scope.csvLoaded = false;
     $scope.showCurrent = true;
     $scope.showNew = false;
+    $scope.updating = false;
 
     // load the current company list
     loadCurrentCompanyList();
@@ -62,10 +63,11 @@
     }
 
     $scope.uploadToDatabase = function () {
-
         if (!$scope.csvLoaded) {
             return;
         }
+
+        $scope.updating = true;
 
         var clientContext = SP.ClientContext.get_current();
         var companyEmailList = clientContext.get_web().get_lists().getByTitle("CompanyEmailList");
@@ -99,6 +101,12 @@
                     $("#modalHeader").html("Database Update Success");
                     $("#modalBody").html("Successfully loaded the data to the database. Click <b>View Current</b> button to recheck values stored in the database.");
                     $("#dialogModal").modal();
+
+                    // Updaing completed
+                    $scope.updating = false;
+                    // Since async call, to update the view apply
+                    $scope.$apply();
+
                     // Load the company list to the view
                     loadCurrentCompanyList();
 

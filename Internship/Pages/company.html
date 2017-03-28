@@ -20,7 +20,7 @@
                     <tbody>
                         <tr ng-repeat="email in studentEmails">
                             <th>{{email}}</th>
-                            <th><h4><span ng-show="students[email]" class="label label-success"><a ng-href="{{hostWeb}}/InternshipList/{{students[email]}}" target="_blank">Download CV</a></span><span ng-hide="students[email]" class="label label-danger">Not Uploaded</span></h4></th>
+                            <th><h4><span style="display:none">{{students[email]}}</span><span ng-show="students[email]" class="label label-success"><a ng-href="{{hostWeb}}/InternshipList/{{students[email]}}" target="_blank">Download CV</a></span><span ng-hide="students[email]" class="label label-danger">Not Uploaded</span></h4></th>
                         </tr>
                     </tbody>
                 </table>

@@ -96,6 +96,8 @@
                     $("#dialogModal").modal();
 
                     $scope.updating = false;
+                    // Since an ASYNC call, call apply
+                    $scope.$apply();
 
                 }, onError)
 
@@ -103,9 +105,6 @@
             }, onError)
         },
         onError);
-
-
-        // After that Add all the new records
 
     }
 

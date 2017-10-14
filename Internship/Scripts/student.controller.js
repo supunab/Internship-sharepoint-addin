@@ -16,7 +16,8 @@
 
     // Get the compnay details for the user
     var userEmail = userService.userEmail;
-
+    
+    // handle this when name contains dots
     $scope.link1 = userService.hostWebUrl + '/InternshipList/' + userEmail.split('.')[0] + userEmail.split('.')[1].split('@')[0] + '0.pdf';
     $scope.link2 = userService.hostWebUrl + '/InternshipList/' + userEmail.split('.')[0] + userEmail.split('.')[1].split('@')[0] + '1.pdf';
 
@@ -80,7 +81,9 @@
     $scope.submitCV = function (id) {
 
         // check the file extension
-        if ($('#getFile' + id).val().split('.')[1] != 'pdf') {
+        // if the file name contains dots, handle it
+        temp = $('#getFile' + id).val().split('.').length
+        if ($('#getFile' + id).val().split('.')[temp - 1] != 'pdf') {
             $("#modalHeader").html("File Type Error");
             $("#modalBody").html("Only PDFs are allowed to upload.");
             $("#dialogModal").modal();
